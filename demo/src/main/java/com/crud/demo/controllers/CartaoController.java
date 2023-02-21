@@ -1,11 +1,12 @@
 package com.crud.demo.controllers;
+
+
 import com.crud.demo.entitys.CartaoEntity;
 import com.crud.demo.repository.CartaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 public class CartaoController {
     @Autowired
@@ -27,4 +28,5 @@ public class CartaoController {
     public String alterarCartao(){
         return "Cartão alterado com sucesso!";
     }
+
 }

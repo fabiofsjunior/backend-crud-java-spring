@@ -1,7 +1,7 @@
 package com.crud.demo.entitys;
-
-
 import jakarta.persistence.*;
+
+
 ///Classe que representa a Tabela do DB.
 @Entity
 @Table(schema = "public", name = "cartao")

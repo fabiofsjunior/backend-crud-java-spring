@@ -1,5 +1,6 @@
 package com.crud.demo.controllers;
 
+
 import com.crud.demo.entitys.UserEntity;
 import com.crud.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
