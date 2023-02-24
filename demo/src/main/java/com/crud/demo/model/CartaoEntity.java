@@ -1,10 +1,8 @@
 package com.crud.demo.model;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
-
-
-///Classe que representa a Tabela do DB.
 @Data
 @Entity
 @Table(schema = "public", name = "cartao")
@@ -24,8 +22,5 @@ public class CartaoEntity {
     private String tipoCartao;
     @Column(name = "fk_usuario", length = 255, nullable = false )
     private int fk_usuario;
-
-    public CartaoEntity() {
-    }
 
 }

@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping
 @AllArgsConstructor
+@CrossOrigin(origins = "*")
 public class CartaoController {
     @Autowired
     private CartaoRepository cartaoRepository;
