@@ -2,7 +2,7 @@ package com.crud.demo.controllers;
 
 
 import com.crud.demo.model.UsuarioEntity;
-import com.crud.demo.repository.UsarioRepository;
+import com.crud.demo.services.UsuarioService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,22 +15,18 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class UsuarioController {
     @Autowired
-    private UsarioRepository usarioRepository;
+    private UsuarioService usuarioService;
+
     @GetMapping("/api/usuario")
     public List<UsuarioEntity> buscarUsuario(){
-        return usarioRepository.findAll();
+
+        return usuarioService.list();
     }
     @PostMapping("/api/usuario")
-    public UsuarioEntity criarUsuario(UsuarioRequest usuarioRequest){
-        ///Recebeu o Request do FRONT, e Criou uma Entity pra salvar no banco.
-        var dadosUsuario = UsuarioEntity.builder()
-                .nomeUsuario(usuarioRequest.getNomeUsuario())
-                .emailUsuario(usuarioRequest.getEmailUsuario())
-                .senhaUsuario(usuarioRequest.getSenhaUsuario()).build();
+    public UsuarioService criarUsuario(@RequestBody UsuarioRequest usuarioRequest){
 
-        var usuarioCriado = usarioRepository.save(dadosUsuario);
-
-        return usuarioCriado;
+        criarUsuario(usuarioRequest);
+        return usuarioService;
     }
     @DeleteMapping("/api/usuario")
     public String deletarUsuario(){

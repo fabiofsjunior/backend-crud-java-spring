@@ -8,4 +8,5 @@ public class UsuarioRequest {
     private String nomeUsuario;
     private String emailUsuario;
     private String senhaUsuario;
+
 }
