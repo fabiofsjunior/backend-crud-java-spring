@@ -4,8 +4,10 @@ package com.crud.demo.model;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Builder
 @Table(schema = "public", name = "usuario")
@@ -21,4 +23,10 @@ public class UsuarioEntity {
     @Column(name = "senhaUsuario", length = 255, nullable = false )
     private String senhaUsuario;
 
+    public UsuarioEntity(Long idUsuario, String nomeUsuario, String emailUsuario, String senhaUsuario) {
+        this.idUsuario = idUsuario;
+        this.nomeUsuario = nomeUsuario;
+        this.emailUsuario = emailUsuario;
+        this.senhaUsuario = senhaUsuario;
+    }
 }

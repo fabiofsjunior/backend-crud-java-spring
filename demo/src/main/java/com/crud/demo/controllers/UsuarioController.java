@@ -19,7 +19,6 @@ public class UsuarioController {
 
     @GetMapping("/api/usuario")
     public List<UsuarioEntity> buscarUsuario(){
-
         return usuarioService.list();
     }
     @PostMapping("/api/usuario")

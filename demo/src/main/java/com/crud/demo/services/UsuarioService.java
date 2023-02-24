@@ -12,9 +12,8 @@ import java.util.List;
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
-    private List<UsuarioEntity> usuariosNaTabela;
     public List<UsuarioEntity> list(){
-        List<UsuarioEntity> usuariosNaTabela =  usuarioRepository.findAll();
+        List<UsuarioEntity> usuariosNaTabela =  this.usuarioRepository.findAll();
         return usuariosNaTabela;
     }
     UsuarioEntity criarUsuario(UsuarioRequest usuarioRequest) {
@@ -28,4 +27,7 @@ public class UsuarioService {
         return usuarioCriado;
     }
 
+    public UsuarioRepository getUsuarioRepository() {
+        return usuarioRepository;
+    }
 }
