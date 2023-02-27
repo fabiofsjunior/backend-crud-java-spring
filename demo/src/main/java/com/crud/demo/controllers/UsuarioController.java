@@ -5,6 +5,8 @@ import com.crud.demo.model.UsuarioEntity;
 import com.crud.demo.services.UsuarioService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,10 +24,10 @@ public class UsuarioController {
         return usuarioService.list();
     }
     @PostMapping("/api/usuario")
-    public UsuarioService criarUsuario(@RequestBody UsuarioRequest usuarioRequest){
+    public UsuarioEntity criarUsuario(@RequestBody UsuarioEntity usuarioEntity){
 
-        criarUsuario(usuarioRequest);
-        return usuarioService;
+        usuarioService.getUsuarioRepository().save(usuarioEntity);
+        return usuarioEntity;
     }
     @DeleteMapping("/api/usuario")
     public String deletarUsuario(){
