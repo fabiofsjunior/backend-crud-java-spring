@@ -29,7 +29,18 @@ public class UsuarioService {
         return usuarioCriado;
     }
 
-    public UsuarioRepository getUsuarioRepository() {
-        return usuarioRepository;
+    public void deletarUsuario(Long id) {
+        usuarioRepository.deleteById(id);
+    }
+
+    public UsuarioEntity alterarUsuario(Long id, UsuarioRequest usuarioRequest) {
+        var dadosAlteradosUsuario = usuarioRepository.save(UsuarioEntity.builder()
+                .idUsuario(id)
+                .nomeUsuario(usuarioRequest.getNomeUsuario())
+                .emailUsuario(usuarioRequest.getEmailUsuario())
+                .senhaUsuario(usuarioRequest.getSenhaUsuario())
+                .build());
+
+        return dadosAlteradosUsuario;
     }
 }

@@ -6,7 +6,6 @@ import com.crud.demo.services.UsuarioService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,16 +23,18 @@ public class UsuarioController {
         return usuarioService.list();
     }
     @PostMapping("/api/usuario")
+    @ResponseStatus(HttpStatus.CREATED)
     public UsuarioEntity criarUsuario(@RequestBody UsuarioRequest usuarioRequest){
         return usuarioService.addUsuario(usuarioRequest);
     }
-    @DeleteMapping("/api/usuario")
-    public String deletarUsuario(){
+    @DeleteMapping("/api/usuario/{id}") ///@PathVariable mapeia o id recebido do front
+    public String deletarUsuario(@PathVariable Long id){
+        usuarioService.deletarUsuario(id);
         return "Usuário deletado com sucesso!";
     }
-    @PutMapping("/api/usuario")
-    public String alterarUsuario(){
-        return "Usuário alterado com sucesso!";
+    @PutMapping("/api/usuario/{id}")
+    public UsuarioEntity alterarUsuario(@PathVariable Long id, @RequestBody UsuarioRequest usuarioRequest){
+       return usuarioService.alterarUsuario(id, usuarioRequest);
     }
 
 }
