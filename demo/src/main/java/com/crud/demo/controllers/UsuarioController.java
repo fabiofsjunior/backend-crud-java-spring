@@ -24,10 +24,8 @@ public class UsuarioController {
         return usuarioService.list();
     }
     @PostMapping("/api/usuario")
-    public UsuarioEntity criarUsuario(@RequestBody UsuarioEntity usuarioEntity){
-
-        usuarioService.getUsuarioRepository().save(usuarioEntity);
-        return usuarioEntity;
+    public UsuarioEntity criarUsuario(@RequestBody UsuarioRequest usuarioRequest){
+        return usuarioService.addUsuario(usuarioRequest);
     }
     @DeleteMapping("/api/usuario")
     public String deletarUsuario(){

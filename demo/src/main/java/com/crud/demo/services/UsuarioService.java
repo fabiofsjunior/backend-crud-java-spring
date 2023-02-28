@@ -18,9 +18,9 @@ public class UsuarioService {
         List<UsuarioEntity> usuariosNaTabela =  this.usuarioRepository.findAll();
         return usuariosNaTabela;
     }
-    public UsuarioEntity addUsuario(UsuarioEntity usuarioRequest) {
+    public UsuarioEntity addUsuario(UsuarioRequest usuarioRequest) {
         ///Recebeu o Request do FRONT, e Criou uma Entity pra salvar no banco.
-        var dadosUsuario = usuarioRequest.builder()
+        var dadosUsuario = UsuarioEntity.builder()
                 .nomeUsuario(usuarioRequest.getNomeUsuario())
                 .emailUsuario(usuarioRequest.getEmailUsuario())
                 .senhaUsuario(usuarioRequest.getSenhaUsuario()).build();
