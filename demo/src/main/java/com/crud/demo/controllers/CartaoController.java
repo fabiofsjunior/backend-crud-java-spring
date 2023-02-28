@@ -2,6 +2,7 @@ package com.crud.demo.controllers;
 
 import com.crud.demo.model.CartaoEntity;
 import com.crud.demo.repository.CartaoRepository;
+import com.crud.demo.services.CartaoService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +15,11 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class CartaoController {
     @Autowired
-    private CartaoRepository cartaoRepository;
+    private CartaoService cartaoService;
 
     @GetMapping("/api/cartao")
-    public List<CartaoEntity> buscarCartao(){
-        return cartaoRepository.findAll();
+    public List<CartaoEntity> exibirCartoes(){
+        return cartaoService.listarCartoes();
     }
     @PostMapping("/api/cartao")
     public String criarCartao(){

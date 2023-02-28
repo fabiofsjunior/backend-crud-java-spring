@@ -20,7 +20,7 @@ public class UsuarioController {
 
     @GetMapping("/api/usuario")
     public List<UsuarioEntity> buscarUsuario(){
-        return usuarioService.list();
+        return usuarioService.listarUsuarios();
     }
     @PostMapping("/api/usuario")
     @ResponseStatus(HttpStatus.CREATED)

@@ -1,5 +1,6 @@
 package com.crud.demo.model;
 
+import com.crud.demo.services.enumeradores.TipoCartao;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -18,8 +19,11 @@ public class CartaoEntity {
     private String numeroCartao;
     @Column(name = "status_cartao", length = 255, nullable = false )
     private boolean statusCartao;
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo_cartao", length = 255, nullable = false )
-    private String tipoCartao;
+    private TipoCartao tipoCartao;
+
+
     @Column(name = "fk_usuario", length = 255, nullable = false )
     private int fk_usuario;
 

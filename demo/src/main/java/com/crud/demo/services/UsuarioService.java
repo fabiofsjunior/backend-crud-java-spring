@@ -14,7 +14,7 @@ import java.util.List;
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
-    public List<UsuarioEntity> list(){
+    public List<UsuarioEntity> listarUsuarios(){
         List<UsuarioEntity> usuariosNaTabela =  this.usuarioRepository.findAll();
         return usuariosNaTabela;
     }
