@@ -23,8 +23,8 @@ public class CartaoEntity {
     @Column(name = "tipo_cartao", length = 255, nullable = false )
     private TipoCartao tipoCartao;
 
-
-    @Column(name = "fk_usuario", length = 255, nullable = false )
-    private int fk_usuario;
+//    @ManyToOne
+//    @JoinColumn(name="fk_usuario", nullable=false)
+//    private UsuarioEntity fkUsuario;
 
 }
