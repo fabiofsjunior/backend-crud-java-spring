@@ -19,7 +19,11 @@ public class CartaoController {
 
     @GetMapping("/api/cartao")
     public List<CartaoEntity> exibirCartoes(){
-        return cartaoService.listarCartoes();
+        return cartaoService.exibirCartoes();
+    }
+    @GetMapping("/api/cartao/{id}")
+    public List<CartaoEntity> listarCartoes(@PathVariable Long id){
+        return cartaoService.listarCartoes(id);
     }
     @PostMapping("/api/cartao")
     public String criarCartao(){
