@@ -30,13 +30,13 @@ public class UsuarioEntity {
     @OneToMany(fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     @JoinColumn(name="fk_usuario", nullable=false)
-    private Set<CartaoEntity> cartoesUsuario;
+    private Set<CartaoEntity> fkUsuario;
 
-    public UsuarioEntity(Long idUsuario, String nomeUsuario, String emailUsuario, String senhaUsuario, Set<CartaoEntity> cartoesUsuario) {
+    public UsuarioEntity(Long idUsuario, String nomeUsuario, String emailUsuario, String senhaUsuario, Set<CartaoEntity> fkUsuario) {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;
         this.emailUsuario = emailUsuario;
         this.senhaUsuario = senhaUsuario;
-        this.cartoesUsuario = cartoesUsuario;
+        this.fkUsuario = fkUsuario;
     }
 }

@@ -7,6 +7,7 @@ import lombok.Data;
 @Builder
 public class UsuarioRequest {
 
+    private String idUsuario;
     private String nomeUsuario;
     private String emailUsuario;
     private String senhaUsuario;

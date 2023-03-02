@@ -5,6 +5,7 @@ import com.crud.demo.repository.CartaoRepository;
 import com.crud.demo.services.CartaoService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +27,9 @@ public class CartaoController {
         return cartaoService.listarCartoes(id);
     }
     @PostMapping("/api/cartao")
-    public String criarCartao(){
-        return "Cartão criado com sucesso!";
+    @ResponseStatus(HttpStatus.CREATED)
+    public CartaoEntity criarCartao(@RequestBody CartaoRequest cartaoRequest){
+        return cartaoService.criarCartao(cartaoRequest);
     }
     @DeleteMapping("/api/cartao")
     public String deletarCartao(){
