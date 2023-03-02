@@ -3,6 +3,7 @@ package com.crud.demo.services;
 import com.crud.demo.controllers.CartaoRequest;
 import com.crud.demo.model.CartaoEntity;
 import com.crud.demo.repository.CartaoRepository;
+import com.crud.demo.repository.UsuarioRepository;
 import com.crud.demo.services.enumeradores.TipoCartao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,10 @@ import java.util.Random;
 public class CartaoService {
     @Autowired
     private CartaoRepository cartaoRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
     private String numeroCartao;
-    private CartaoEntity fkUsuario;
 
 
     public List<CartaoEntity> exibirCartoes(){
@@ -32,17 +35,20 @@ public class CartaoService {
     public CartaoEntity criarCartao(CartaoRequest cartaoRequest) {
         var string = cartaoRequest.getTipoCartao().toString();
         var upperCase = string.toUpperCase();
-
+//        var fkUsuarioId = usuarioRepository.findById(cartaoRequest.getFkUsuario()).get();
         var cartaoObjeto = CartaoEntity.builder()
                 .tipoCartao(TipoCartao.valueOf(upperCase))
                 .nomeCartao(cartaoRequest.getNomeCartao())
+                .fkUsuario(cartaoRequest.getFkUsuario())
                 .statusCartao(cartaoRequest.isStatusCartao())
                 .numeroCartao(gerarNumeroCartao()).build();
 
-        this.fkUsuario = cartaoRequest.getFkUsuario();
-        
         var cartaoCriado = this.cartaoRepository.save(cartaoObjeto);
         return cartaoCriado;
+    }
+
+    public void deletarCartao(Long id){
+        cartaoRepository.deleteById(id);
     }
     public String gerarNumeroCartao() {
 

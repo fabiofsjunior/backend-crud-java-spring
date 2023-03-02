@@ -27,16 +27,19 @@ public class UsuarioEntity {
     @Column(name = "senhaUsuario", length = 255, nullable = false )
     private String senhaUsuario;
 
-    @OneToMany(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    @JoinColumn(name="fk_usuario", nullable=false)
-    private Set<CartaoEntity> fkUsuario;
 
-    public UsuarioEntity(Long idUsuario, String nomeUsuario, String emailUsuario, String senhaUsuario, Set<CartaoEntity> fkUsuario) {
+//    mappedBy = "fkUsuario",
+    @OneToMany(mappedBy = "fkUsuario",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+//    @JoinColumn(name="fk_usuario", nullable=false)
+    private Set<CartaoEntity> cartoesUsuario;
+
+    public UsuarioEntity(Long idUsuario, String nomeUsuario, String emailUsuario, String senhaUsuario, Set<CartaoEntity> cartoesUsuario) {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;
         this.emailUsuario = emailUsuario;
         this.senhaUsuario = senhaUsuario;
-        this.fkUsuario = fkUsuario;
+        this.cartoesUsuario = cartoesUsuario;
     }
 }

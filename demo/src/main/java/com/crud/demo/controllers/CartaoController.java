@@ -31,8 +31,9 @@ public class CartaoController {
     public CartaoEntity criarCartao(@RequestBody CartaoRequest cartaoRequest){
         return cartaoService.criarCartao(cartaoRequest);
     }
-    @DeleteMapping("/api/cartao")
-    public String deletarCartao(){
+    @DeleteMapping("/api/cartao/{id}")
+    public String deletarCartao(@PathVariable Long id){
+        cartaoService.deletarCartao(id);
         return "Cartão deletado com sucesso!";
     }
     @PutMapping("/api/cartao")

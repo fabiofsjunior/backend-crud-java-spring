@@ -13,6 +13,6 @@ public class CartaoRequest {
     private TipoCartao tipoCartao;
     private String numeroCartao;
     private boolean statusCartao;
-    private CartaoEntity fkUsuario;
+    private Long fkUsuario;
 
 }

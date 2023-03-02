@@ -28,16 +28,17 @@ public class CartaoEntity {
     @Column(name = "tipo_cartao", length = 255  )
     private TipoCartao tipoCartao;
 
-    public CartaoEntity(Long idCartao, String nomeCartao, String numeroCartao, boolean statusCartao, TipoCartao tipoCartao) {
+//    @ManyToOne
+//    @JoinColumn(name="fk_usuario")
+    @Column(name = "fk_usuario")
+    private Long fkUsuario;
+
+    public CartaoEntity(Long idCartao, String nomeCartao, String numeroCartao, boolean statusCartao, TipoCartao tipoCartao, Long fkUsuario) {
         this.idCartao = idCartao;
         this.nomeCartao = nomeCartao;
         this.numeroCartao = numeroCartao;
         this.statusCartao = statusCartao;
         this.tipoCartao = tipoCartao;
+        this.fkUsuario = fkUsuario;
     }
-
-    //    @ManyToOne
-//    @JoinColumn(name="fk_usuario", nullable=false)
-
-
 }
