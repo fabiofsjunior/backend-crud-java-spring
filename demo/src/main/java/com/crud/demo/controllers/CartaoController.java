@@ -37,8 +37,8 @@ public class CartaoController {
         return "Cartão deletado com sucesso!";
     }
     @PutMapping("/api/cartao")
-    public String alterarCartao(){
-        return "Cartão alterado com sucesso!";
+    public CartaoEntity alterarCartao(@PathVariable Long id, @RequestBody CartaoRequest cartaoRequest){
+        return cartaoService.alterarCartao(id, cartaoRequest);
     }
 
 }

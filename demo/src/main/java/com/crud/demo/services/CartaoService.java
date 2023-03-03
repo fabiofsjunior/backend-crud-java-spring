@@ -2,6 +2,7 @@ package com.crud.demo.services;
 
 import com.crud.demo.controllers.CartaoRequest;
 import com.crud.demo.model.CartaoEntity;
+import com.crud.demo.model.UsuarioEntity;
 import com.crud.demo.repository.CartaoRepository;
 import com.crud.demo.repository.UsuarioRepository;
 import com.crud.demo.services.enumeradores.TipoCartao;
@@ -49,6 +50,20 @@ public class CartaoService {
 
     public void deletarCartao(Long id){
         cartaoRepository.deleteById(id);
+    }
+
+    public CartaoEntity alterarCartao(Long id, CartaoRequest cartaoRequest){
+        var string = cartaoRequest.getTipoCartao().toString();
+        var upperCase = string.toUpperCase();
+
+        var dadosAlteradosCartao = cartaoRepository.save(CartaoEntity.builder()
+                .idCartao(id)
+                .tipoCartao(TipoCartao.valueOf(upperCase))
+                .nomeCartao(cartaoRequest.getNomeCartao())
+                .fkUsuario(cartaoRequest.getFkUsuario())
+                .statusCartao(cartaoRequest.isStatusCartao())
+                .numeroCartao(gerarNumeroCartao()).build());
+        return dadosAlteradosCartao;
     }
     public String gerarNumeroCartao() {
 
