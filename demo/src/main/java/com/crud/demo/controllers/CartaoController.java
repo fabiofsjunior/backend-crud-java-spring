@@ -31,6 +31,11 @@ public class CartaoController {
     public CartaoEntity criarCartao(@RequestBody CartaoRequest cartaoRequest){
         return cartaoService.criarCartao(cartaoRequest);
     }
+    @PostMapping("/api/cartao/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public CartaoEntity criarCartaoPorId(@RequestBody CartaoRequest cartaoRequest){
+        return cartaoService.criarCartao(cartaoRequest);
+    }
     @DeleteMapping("/api/cartao/{id}")
     public String deletarCartao(@PathVariable Long id){
         cartaoService.deletarCartao(id);

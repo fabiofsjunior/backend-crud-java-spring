@@ -47,6 +47,20 @@ public class CartaoService {
         var cartaoCriado = this.cartaoRepository.save(cartaoObjeto);
         return cartaoCriado;
     }
+    public CartaoEntity criarCartaoPorId(CartaoRequest cartaoRequest) {
+        var string = cartaoRequest.getTipoCartao().toString();
+        var upperCase = string.toUpperCase();
+//        var fkUsuarioId = usuarioRepository.findById(cartaoRequest.getFkUsuario()).get();
+        var cartaoObjeto = CartaoEntity.builder()
+                .tipoCartao(TipoCartao.valueOf(upperCase))
+                .nomeCartao(cartaoRequest.getNomeCartao())
+                .fkUsuario(cartaoRequest.getFkUsuario())
+                .statusCartao(cartaoRequest.isStatusCartao())
+                .numeroCartao(gerarNumeroCartao()).build();
+
+        var cartaoCriado = this.cartaoRepository.save(cartaoObjeto);
+        return cartaoCriado;
+    }
 
     public void deletarCartao(Long id){
         cartaoRepository.deleteById(id);
