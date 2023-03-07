@@ -61,16 +61,14 @@ public class CartaoService {
     }
 
     public CartaoEntity alterarCartao(Long id, CartaoRequest cartaoRequest){
-        var string = cartaoRequest.getTipoCartao().toString();
-        var upperCase = string.toUpperCase();
 
         var dadosAlteradosCartao = cartaoRepository.save(CartaoEntity.builder()
                 .idCartao(id)
-                .tipoCartao(TipoCartao.valueOf(upperCase))
+                .tipoCartao(cartaoRequest.getTipoCartao())
                 .nomeCartao(cartaoRequest.getNomeCartao())
                 .fkUsuario(cartaoRequest.getFkUsuario())
                 .statusCartao(cartaoRequest.isStatusCartao())
-                .numeroCartao(gerarNumeroCartao()).build());
+                .numeroCartao(cartaoRequest.getNumeroCartao()).build());
         return dadosAlteradosCartao;
     }
     public String gerarNumeroCartao() {
