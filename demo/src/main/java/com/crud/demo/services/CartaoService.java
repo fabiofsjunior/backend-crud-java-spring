@@ -34,11 +34,8 @@ public class CartaoService {
     }
 
     public CartaoEntity criarCartao(CartaoRequest cartaoRequest) {
-        var string = cartaoRequest.getTipoCartao().toString();
-        var upperCase = string.toUpperCase();
-//        var fkUsuarioId = usuarioRepository.findById(cartaoRequest.getFkUsuario()).get();
         var cartaoObjeto = CartaoEntity.builder()
-                .tipoCartao(TipoCartao.valueOf(upperCase))
+                .tipoCartao(cartaoRequest.getTipoCartao())
                 .nomeCartao(cartaoRequest.getNomeCartao())
                 .fkUsuario(cartaoRequest.getFkUsuario())
                 .statusCartao(cartaoRequest.isStatusCartao())
@@ -48,11 +45,8 @@ public class CartaoService {
         return cartaoCriado;
     }
     public CartaoEntity criarCartaoPorId(CartaoRequest cartaoRequest) {
-        var string = cartaoRequest.getTipoCartao().toString();
-        var upperCase = string.toUpperCase();
-//        var fkUsuarioId = usuarioRepository.findById(cartaoRequest.getFkUsuario()).get();
         var cartaoObjeto = CartaoEntity.builder()
-                .tipoCartao(TipoCartao.valueOf(upperCase))
+                .tipoCartao(cartaoRequest.getTipoCartao())
                 .nomeCartao(cartaoRequest.getNomeCartao())
                 .fkUsuario(cartaoRequest.getFkUsuario())
                 .statusCartao(cartaoRequest.isStatusCartao())
