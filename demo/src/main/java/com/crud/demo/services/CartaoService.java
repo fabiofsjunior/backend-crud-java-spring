@@ -29,7 +29,7 @@ public class CartaoService {
     }
 
     public List<CartaoEntity> listarCartoes(Long id){
-        List<CartaoEntity> cartaoDoUsuarioId =  this.cartaoRepository.findAllById(Collections.singleton(id));
+        List<CartaoEntity> cartaoDoUsuarioId = (List<CartaoEntity>) this.cartaoRepository.findByFkUsuario(id);
         return cartaoDoUsuarioId;
     }
 
